@@ -1,0 +1,56 @@
+<div class="result-box">
+  <i class="pi pi-check"></i>
+  <h3>All done.</h3>
+  <ul>
+    
+    <li>
+      <span>User</span>
+      <span>
+        {{_user.fullName}}
+      </span>
+
+    </li>
+    <li>
+      <span>
+        Amout
+      </span>
+      <span>${{_information.amount | number}}</span>
+    </li>
+    <li>
+      <span>
+        Date
+      </span>
+      <span>
+        {{_information.date | date}}
+      </span>
+    </li>
+    <li>
+      <span>
+        Status
+      </span>
+      <span>
+        {{_information.status?.text}}
+      </span>
+    </li>
+    <li>
+      <span>
+        Fund
+      </span>
+      <span>
+        {{_information.fund}}
+      </span>
+    </li>
+    <li>
+      <span>Image</span>
+      <span>
+        <p-image width="150" [preview]="true" [src]="_image"></p-image>
+      </span>
+    </li>
+  </ul>
+
+  <footer>
+    <button (click)="_handleDone()" pButton pRipple type="button" icon="pi pi-check" label="Done"
+    class="p-button-success"></button>
+  </footer>
+
+</div>

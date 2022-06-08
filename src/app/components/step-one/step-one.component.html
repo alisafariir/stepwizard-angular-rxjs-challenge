@@ -1,0 +1,24 @@
+<div class="step-container">
+  <div class="step-body">
+    <div class="upload-container">
+      <ng-container *ngIf="_image === ''; else imageTemplate">
+        <p-fileUpload mode="basic" accept="image/*" [fileLimit]="1" [maxFileSize]="1000000" max
+          (onSelect)="_handleOnSelectImage($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+        <p>Please choose an image</p>
+      </ng-container>
+      <ng-template #imageTemplate>
+        <div class="image-container">
+          <p-image width="350" [preview]="true" [src]="_image"></p-image>
+        </div>
+        <button pButton (click)="_handleRemoveImage()" type="button" label="Remove image" class="p-button-danger p-button-text"></button>
+      </ng-template>
+
+      <p-messages [(value)]="_messages" [enableService]="false"></p-messages>
+    </div>
+  </div>
+  <div class="steps-footer">
+    <div></div>
+    <button (click)="_handleNextStep()" pButton pRipple type="button" iconPos="right" icon="pi pi-arrow-right" label="Next"
+    class="p-button-text"></button>
+  </div>
+</div>

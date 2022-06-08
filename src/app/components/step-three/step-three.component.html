@@ -1,0 +1,31 @@
+<div class="step-container">
+  <div class="step-body">
+    <div class="user-table">
+      <p-table [value]="_userItems">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Avatar</th>
+                <th>FullName</th>
+                <th>E-mail</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td><img width="64" class="rounded-full" [src]="user.avatar"></td>
+                <td>{{user.fullName}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                  <p-button (onClick)="_handleSelectUser(user)" label="Select" icon="pi pi-check" styleClass="p-button-sm w-full"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+  </div>
+  <div class="steps-footer">
+    <button (click)="_handlePrevStep()" pButton pRipple type="button" icon="pi pi-arrow-left" label="Back"
+      class="p-button-text p-button-plain"></button>
+    <div></div>
+  </div>
+</div>

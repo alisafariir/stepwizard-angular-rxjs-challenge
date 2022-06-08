@@ -1,0 +1,50 @@
+<div class="step-container">
+  <div class="step-body">
+
+    <form [formGroup]="_informationForm" class="form">
+      <div class="field">
+        <label for="amount">Amount *</label>
+        <p-inputNumber class="w-full" [ngClass]="{'ng-invalid ng-dirty': validateField('amount')}"
+          formControlName="amount" inputId="amount" mode="currency" currency="USD" locale="en-US">
+        </p-inputNumber>
+        <span class="validator-text" *ngIf="validateField('amount')">
+          Amount is required
+        </span>
+      </div>
+      <div class="field">
+        <label for="date">Date *</label>
+        <p-calendar [ngClass]="{'ng-invalid ng-dirty': validateField('date')}" formControlName="date"
+          [minDate]="_minDate" [maxDate]="_maxDate" [readonlyInput]="true" inputId="date">
+        </p-calendar>
+        <span class="validator-text" *ngIf="validateField('date')">
+          Date is required
+        </span>
+      </div>
+
+      <div class="field">
+        <label for="status">
+          Status *
+        </label>
+        <p-dropdown [ngClass]="{'ng-invalid ng-dirty': validateField('status')}" formControlName="status" [options]="_statusItems" placeholder="Select a status" optionLabel="text"
+          inputId="status"></p-dropdown>
+        <span class="validator-text" *ngIf="validateField('status')">
+          Status is required
+        </span>
+      </div>
+      <div class="field">
+        <label for="status">
+          Fund *
+        </label>
+        <input [ngClass]="{'ng-invalid ng-dirty': validateField('fund')}" formControlName="fund" type="text" pInputText onkeydown="return /[a-z]/i.test(event.key)" />
+        <span class="validator-text" *ngIf="validateField('fund')">
+          Fund is required
+        </span>
+      </div>
+    </form>
+  </div>
+  <div class="steps-footer">
+    <button (click)="_handlePrevStep()" pButton pRipple type="button" icon="pi pi-arrow-left" label="Back"
+      class="p-button-text p-button-plain"></button>
+    <p-button type="button" (onClick)="_handleNextStep()" label="Submit" icon="pi pi-check"></p-button>
+  </div>
+</div>
